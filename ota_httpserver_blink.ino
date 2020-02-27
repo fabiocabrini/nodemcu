@@ -13,10 +13,10 @@ void setup(void){
   Serial.println();
   Serial.println("Iniciando...");
   WiFi.mode(WIFI_AP_STA);
-  WiFi.begin("NET_2GC89758", "B3C89758");
+  WiFi.begin("SSID", "PASSWORD");
 
   while(WiFi.waitForConnectResult() != WL_CONNECTED){
-    WiFi.begin("NET_2GC89758", "B3C89758");
+    WiFi.begin("SSID", "PASSWORD");
     Serial.println("Falha no Wifi, tentando novamente...");
   }
 
