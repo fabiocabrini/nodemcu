@@ -8,7 +8,7 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   delay(10);
     // Conecta a rede WiFi
-  WiFi.begin("NET_2GC89758", "B3C89758");
+  WiFi.begin("SSID", "PASSWORD");
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -23,7 +23,8 @@ void setup() {
 
 void loop() {
   HTTPClient http;
-  http.begin("192.168.0.25", 80, "/versao.txt");
+  http.begin("IPSERVIDOR", 80, "/versao.txt");
+    // Precisa criar o arquivo versao.txt no server com o valor inteiro 1, 2, 3, ...
     // inicio da conexao HTTP e envio do header
   if(http.GET() == 200) {
   uint8_t versao = EEPROM.read(0);
@@ -33,7 +34,7 @@ void loop() {
       EEPROM.write(0, versaoSite);
       EEPROM.commit();
       t_httpUpdate_return ret;
-ret = ESPhttpUpdate.update("http://192.168.0.25/OTAhttpclient_blink.ino.nodemcu.bin");
+ret = ESPhttpUpdate.update("http://IPSERVIDOR/ARQUIVO.bin");
       if (ret != HTTP_UPDATE_OK) {
         Serial.print("Falha na atualizacao: ");
   Serial.print(ESPhttpUpdate.getLastError());
