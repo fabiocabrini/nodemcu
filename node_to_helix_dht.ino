@@ -4,7 +4,7 @@
 #include <math.h>
 #include <Adafruit_Sensor.h>
 #define DHTTYPE DHT22   
-#define dht_dpin D5
+#define dht_dpin D1
 #define LED_BUILTIN 2
 
 const char* orionAddressPath = "IP_HELIX:1026/v2";
